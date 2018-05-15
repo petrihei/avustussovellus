@@ -12,4 +12,4 @@ Toimintoja:
 * Avustushakemusten listaus
 * Käyttäjien luominen
 * Käyttäjien poistaminen
-* KÄyttäjän tietojen muokkaaminen
+* Käyttäjän tietojen muokkaaminen
