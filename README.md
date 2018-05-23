@@ -17,4 +17,4 @@ Toimintoja:
 * Käyttäjän tietojen muokkaaminen
 
 
-Sovellus löytyy Herokusta: https://avustussovellus.herokuapp.com/applications
+Sovellus löytyy Herokusta: https://avustussovellus.herokuapp.com
