@@ -1,0 +1,22 @@
+{% extends "layout.html" %} 
+
+{% block body %}
+<table>
+    <tr>
+        <th>Application</th>
+        <th>Approved</th>
+        <th></th>
+    </tr>
+    {% for application in applications %}
+    <tr>
+        <td>{{ application.name }}</td>
+        <td>{{ application.approved }}</td>
+        <td>
+            <form method="POST" action="{{ url_for('applications_set_approved', application_id=application.id) }}">
+                <input type="submit" value="Approve application" />
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

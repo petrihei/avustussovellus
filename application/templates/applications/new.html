@@ -1,0 +1,6 @@
+{% extends "layout.html" %} {% block body %}
+<form method="POST" action="{{ url_for('applications_create') }}">
+    <input type="text" name="name" />
+    <input type="submit" value="Add a new application" />
+</form>
+{% endblock %}

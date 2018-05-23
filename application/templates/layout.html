@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Avustussovellus</title>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <a href="{{ url_for('applications_index') }}">List applications</a>
+        </li>
+        <li>
+            <a href="{{ url_for('applications_form') }}">Add a application</a>
+        </li>
+    </ul>
+
+    {% block body %}
+    <p>
+        Content.
+    </p>
+    {% endblock %}
+</body>
+
+</html>
