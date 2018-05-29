@@ -70,5 +70,5 @@ env.bak/
 venv.bak/
 venv
 
-applications.db
+application/applications.db
 muistiinpanot.txt
