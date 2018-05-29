@@ -1,6 +1,55 @@
-{% extends "layout.html" %} {% block body %}
+ {% extends "layout.html" %} {% block body %}
 <form method="POST" action="{{ url_for('applications_create') }}">
-    <input type="text" name="name" />
-    <input type="submit" value="Add a new application" />
+    <table>
+        <tr>
+            <td>
+                {{ form.name.label }}
+            </td>
+            <td>
+                {{ form.name }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.name.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.sum.label }}
+            </td>
+            <td>
+                {{ form.sum }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.sum.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.definition.label }}
+            </td>
+            <td>
+                {{ form.definition }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.definition.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <input type="submit" value="Add a new application" />
+            </td>
+        </tr>
 </form>
 {% endblock %}
