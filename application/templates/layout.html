@@ -9,14 +9,17 @@
 <body>
 {% if current_user.is_authenticated %}
 <p>
-Kirjautunut nimellä {{ current_user.name }}.
-<a href="{{ url_for('auth_logout') }}">Kirjaudu ulos</a>
+Login name {{ current_user.name }}.
+<a href="{{ url_for('auth_logout') }}">Logout</a>
 </p>
 {% else %}
-<a href="{{ url_for('auth_login') }}">Kirjaudu</a>
+<a href="{{ url_for('auth_login') }}">Login</a>
 {% endif %}
 
     <ul>
+        <li>
+            <a href="{{ url_for('register') }}">Register</a>
+        </li>
         <li>
             <a href="{{ url_for('applications_index') }}">List applications</a>
         </li>
