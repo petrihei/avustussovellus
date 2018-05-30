@@ -13,5 +13,5 @@ class LoginForm(FlaskForm):
 class RegistrationForm(Form):
     name = StringField('Name', [validators.Length(min=2, max=35)])
     username = StringField('Username', [validators.Length(min=4, max=25)])
-    password = PasswordField('New Password', [
-        validators.DataRequired()])
+    password = PasswordField('New Password', [validators.Length(min=4, max=25),
+    validators.DataRequired()])
