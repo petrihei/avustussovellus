@@ -19,9 +19,7 @@ Toimintoja:
 
 Sovellus löytyy Herokusta: https://avustussovellus.herokuapp.com
 
-### Testitunnarit:
-tero
-testaaja
+Testitunnus on 'tero' ja salasana 'testaaja'
 
 [Käyttötapaukset ja tietokantakaavio](https://github.com/petrihei/avustussovellus/tree/master/documentation)
 
