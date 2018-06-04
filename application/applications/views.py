@@ -42,3 +42,13 @@ def applications_create():
     db.session().commit()
 
     return redirect(url_for("applications_index"))
+
+@app.route("/applications/remove/<application_id>/", methods=["POST"])
+@login_required
+def applications_remove(application_id):
+
+    t = Application.query.get(application_id)
+    db.session().delete(t)
+    db.session().commit()
+
+    return redirect(url_for("applications_index"))

@@ -20,6 +20,11 @@
                 <input type="submit" value="Approve application" />
             </form>
         </td>
+        <td>
+            <form method="POST" action="{{ url_for('applications_remove', application_id=application.id) }}">
+                <input type="submit" value="Delete application" />
+            </form>
+        </td>
     </tr>
     {% endfor %}
 </table>
