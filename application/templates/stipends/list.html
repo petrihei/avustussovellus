@@ -1,0 +1,33 @@
+{% extends "layout.html" %} 
+
+{% block body %}
+<table>
+    <tr>
+        <th>Stipend</th>
+        <th>Sum</th>
+        <th>Explanation</th>
+        <th>Receiver</th>
+        <th></th>
+    </tr>
+    {% for stipend in stipends %}
+    <tr>
+        <td>{{ stipend.name }}</td>
+        <td>{{ stipend.sum }}</td>
+        <td>{{ stipend.definition }}</td>
+        <td>{{ stipend.receiver }}</td>
+        <!--
+        <td>
+            <form method="POST" action="{{ url_for('stipends_set', stipend_id=stipend.id) }}">
+                <input type="submit" value="Set receiver" name="Set" />
+            </form>
+        </td>
+    -->
+        <td>
+            <form method="POST" action="{{ url_for('stipends_remove', stipend_id=stipend.id) }}">
+                <input type="submit" value="Delete stipend" name="Delete" />
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

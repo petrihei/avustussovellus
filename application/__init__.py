@@ -19,6 +19,9 @@ from application import views
 from application.applications import models
 from application.applications import views
 
+from application.stipends import models
+from application.stipends import views
+
 from application.auth import models
 from application.auth import views
 
