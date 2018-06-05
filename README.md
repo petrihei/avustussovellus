@@ -19,7 +19,6 @@ Toimintoja:
 * Käyttäjien poistaminen
 * Käyttäjän tietojen muokkaaminen
 
-
 Sovellus löytyy Herokusta: https://avustussovellus.herokuapp.com
 
 Testitunnus on `tero` ja salasana `testaaja`. Voit myös kirjautua ja luoda uuden käyttäjän.
