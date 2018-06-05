@@ -12,6 +12,9 @@ Toimintoja:
 * Automaattinen tarkastus avustuksen myöntämisestä edellisen 12 kk aikana
 * Lisätietojen kysyminen
 * Avustushakemusten listaus
+* Stipendien tekeminen
+* Stipendien listaus
+* Stipendin saajan asettaminen
 * Käyttäjien luominen
 * Käyttäjien poistaminen
 * Käyttäjän tietojen muokkaaminen
