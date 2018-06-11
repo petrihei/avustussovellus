@@ -30,12 +30,12 @@ class User(Base):
         return True
 
     @staticmethod
-    def find_users_with_no_applications(approved=0):
+    def find_users_with_no_applications():
         stmt = text("SELECT Account.id, Account.name FROM Account"
                     " LEFT JOIN Application ON Application.account_id = Account.id"
-                    " WHERE (Application.approved IS null OR Application.approved = :approved)"
+                    " WHERE (Application.approved IS null)"
                     " GROUP BY Account.id"
-                    " HAVING COUNT(Application.id) = 0").params(approved=approved)
+                    " HAVING COUNT(Application.id) = 0")
         res = db.engine.execute(stmt)
 
         response = []
