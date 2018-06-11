@@ -43,3 +43,29 @@ class User(Base):
             response.append({"id": row[0], "name": row[1]})
 
         return response
+
+    @staticmethod
+    def find_users_with_no_approved_applications():
+        stmt = text("SELECT Account.id, Account.name FROM Account"
+                    " LEFT JOIN Application ON Application.account_id = Account.id"
+                    " WHERE (Application.approved = :approved OR Application.approved IS null)"
+                    " GROUP BY Account.id").params(approved=0)
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"id": row[0], "name": row[1]})
+
+        return response
+
+    @staticmethod
+    def find_users_with_no_stipends():
+        stmt = text("SELECT Account.id, Account.name FROM Account")
+        # TODO: Täydennä siten, että hakee ne, jotka eivät stipend.receiver
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"id": row[0], "name": row[1]})
+
+        return response

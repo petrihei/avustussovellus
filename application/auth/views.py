@@ -49,7 +49,9 @@ def register():
 @app.route("/auth/users")
 @login_required
 def users_index():
-    return render_template("auth/users.html", accounts=User.query.all(), no_applications=User.find_users_with_no_applications())
+    return render_template("auth/users.html", accounts=User.query.all(), 
+                           no_applications=User.find_users_with_no_applications(), no_stipends=User.find_users_with_no_stipends(),
+                           no_approved_applications=User.find_users_with_no_approved_applications())
 
 @app.route("/auth/remove/<account_id>/", methods=["POST"])
 @login_required

@@ -46,4 +46,38 @@
 
 {% endif %}
 
+{% if no_approved_applications is defined %}
+<p>
+    
+    The following users have no approved applications:
+</p>
+
+<ul>
+    {% for user in no_approved_applications %}
+    <li>
+        {{user.id}} {{user.name}}
+    </li>
+    {% endfor %}
+</ul>
+
+{% endif %}
+
+{% if no_stipends is defined %}
+<p>
+
+</p>
+<p>
+    The following users have not received stipends:
+</p>
+
+<ul>
+    {% for user in no_stipends %}
+    <li>
+        {{user.id}} {{user.name}}
+    </li>
+    {% endfor %}
+</ul>
+
+{% endif %}
+
 {% endblock %}
