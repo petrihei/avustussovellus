@@ -48,8 +48,8 @@ class User(Base):
     def find_users_with_no_approved_applications():
         stmt = text("SELECT Account.id, Account.name FROM Account"
                     " LEFT JOIN Application ON Application.account_id = Account.id"
-                    " WHERE (Application.approved = :approved OR Application.approved IS null)"
-                    " GROUP BY Account.id").params(approved=False)
+                    " WHERE (Application.approved != :approved OR Application.approved IS null)"
+                    " GROUP BY Account.id").params(approved=True)
         res = db.engine.execute(stmt)
 
         response = []
