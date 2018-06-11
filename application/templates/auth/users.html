@@ -1,0 +1,49 @@
+{% extends "layout.html" %} {% block body %}
+<p>
+    All users:
+</p>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Username</th>
+        <th>User ID</th>
+        <th>Registration date</th>
+        <th></th>
+    </tr>
+    {% for account in accounts %}
+    <tr>
+        <td>{{ account.name }}</td>
+        <td>{{ account.username }}</td>
+        <td>{{ account.id }}</td>
+        <td>{{ account.date_created }}</td>
+        <!--
+        <td>
+            <form method="POST" action="{{ url_for('users_remove', account_id=account.id) }}">
+                <input type="submit" value="Delete user" name="Delete" />
+            </form>
+        </td>
+        TODO: pitää pystyä poistamaan myös hakemukset ja stipendit, muuten SQL error
+         -->
+    </tr>
+    {% endfor %}
+</table>
+
+{% if no_applications is defined %}
+<p>
+
+</p>
+<p>
+    The following users have no applications:
+</p>
+
+<ul>
+    {% for user in no_applications %}
+    <li>
+        {{user.id}} {{user.name}}
+    </li>
+    {% endfor %}
+</ul>
+
+{% endif %}
+
+{% endblock %}

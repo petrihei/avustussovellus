@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for, flash
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required
 
 from application import app, db
 from application.auth.models import User
@@ -44,3 +44,19 @@ def register():
         flash('Thanks for registering')
         return redirect(url_for('auth_login'))
     return render_template('/auth/registrationform.html', form=form)
+
+
+@app.route("/auth/users")
+@login_required
+def users_index():
+    return render_template("auth/users.html", accounts=User.query.all(), no_applications=User.find_users_with_no_applications())
+
+@app.route("/auth/remove/<account_id>/", methods=["POST"])
+@login_required
+def users_remove(account_id):
+
+    t = User.query.get(account_id)
+    db.session().delete(t)
+    db.session().commit()
+
+    return redirect(url_for("users_index"))

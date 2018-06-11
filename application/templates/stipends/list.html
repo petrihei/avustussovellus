@@ -15,13 +15,6 @@
         <td>{{ stipend.sum }}</td>
         <td>{{ stipend.definition }}</td>
         <td>{{ stipend.receiver }}</td>
-        <!--
-        <td>
-            <form method="POST" action="{{ url_for('stipends_set', stipend_id=stipend.id) }}">
-                <input type="submit" value="Set receiver" name="Set" />
-            </form>
-        </td>
-    -->
         <td>
             <form method="POST" action="{{ url_for('stipends_remove', stipend_id=stipend.id) }}">
                 <input type="submit" value="Delete stipend" name="Delete" />
