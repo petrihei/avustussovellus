@@ -21,7 +21,9 @@ Toimintoja:
 
 Sovellus löytyy Herokusta: https://avustussovellus.herokuapp.com
 
-Testitunnus on `tero` ja salasana `testaaja`. Voit myös kirjautua ja luoda uuden käyttäjän.
+Tavallisen käyttäjän testitunnus on `tero` ja salasana `testaaja`. Voit myös kirjautua ja luoda uuden käyttäjän.
+
+Admin-toiminnallisuuksia voit kokeilla testitunnuksella `antti` ja salasanalla `admin`
 
 [Käyttötapaukset ja tietokantakaavio](https://github.com/petrihei/avustussovellus/tree/master/documentation)
 

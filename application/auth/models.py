@@ -11,11 +11,13 @@ class User(Base):
     name = db.Column(db.String(144), nullable=False)
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
+    role = db.Column(db.String(144), nullable=False)
 
     applications = db.relationship("Application", backref='account', lazy=True)
 
     def __init__(self, name):
         self.name = name
+        self.role = "USER"
 
     def get_id(self):
         return self.id
@@ -28,6 +30,9 @@ class User(Base):
 
     def is_authenticated(self):
         return True
+
+    def roles(self):
+        return self.role
 
     @staticmethod
     def find_users_with_no_applications():
