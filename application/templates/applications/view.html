@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {% block body %}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Sum (€)</th>
+            <th>Explanation</th>
+            <th>Date added</th>
+            <th>User ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ application.name }}</td>
+            <td>{{ application.sum }}</td>
+            <td>{{ application.definition }}</td>
+            <td>{{ application.definition }}</td>
+            <td>{{ application.account_id }}</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

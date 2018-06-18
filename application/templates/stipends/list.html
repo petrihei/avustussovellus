@@ -17,7 +17,7 @@
         <td>{{ stipend.receiver }}</td>
         <td>
             <form method="POST" action="{{ url_for('stipends_remove', stipend_id=stipend.id) }}">
-                <input type="submit" value="Delete stipend" name="Delete" />
+                <button type="submit" class="btn btn-primary btn-sm">Delete stipend</button>
             </form>
         </td>
     </tr>

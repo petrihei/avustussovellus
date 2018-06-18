@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_required, current_user
+from flask_login import current_user, login_required
 
 from application import app, db
 from application.applications.models import Application
@@ -51,4 +51,31 @@ def applications_remove(application_id):
     db.session().delete(t)
     db.session().commit()
 
+    return redirect(url_for("applications_index"))
+
+
+@app.route("/applications/view/<application_id>")
+@login_required
+def applications_view(application_id):
+    return render_template("applications/view.html", application=Application.query.get(application_id))
+
+
+@app.route("/applications/edit/<application_id>")
+@login_required
+def applications_edit_form(application_id):
+    return render_template("applications/edit.html", form=ApplicationForm(), application=Application.query.get(application_id))
+
+
+@app.route("/applications/edit/<application_id>", methods=["POST"])
+@login_required
+def applications_edit(application_id):
+    form = ApplicationForm(request.form)
+    application = Application.query.get(application_id)
+    form.application_id = application.id
+    if not form.validate():
+        return render_template("applications/edit.html", form=form, application=application)
+    form.name = application.name
+    application.sum = form.sum.data
+    form.definition = application.definition
+    db.session().commit()
     return redirect(url_for("applications_index"))

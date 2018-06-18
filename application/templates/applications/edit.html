@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block body %}
+<form method="POST" action="{{ url_for('applications_edit', application_id=application.id) }}">
+    {{ application.name }} {{ form.sum }}
+    <button type="submit" class="btn btn-primary">Edit sum</button>
+</form>
+{% endblock %}
