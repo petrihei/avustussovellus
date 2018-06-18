@@ -30,16 +30,16 @@ login_manager.login_message = "Please login to use this functionality."
 # autorisointi
 
 from functools import wraps
-
+from flask import render_template
 
 def login_required(role="ANY"):
     def wrapper(fn):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
             if not current_user.is_authenticated:
-                return login_manager.unauthorized()
+                return render_template("auth/unauthorized.html")
             if ((current_user.role != role) and (role != "ANY")):
-                return login_manager.unauthorized()
+                return render_template("auth/unauthorized.html")
             return fn(*args, **kwargs)
         return decorated_view
     return wrapper
