@@ -27,3 +27,5 @@ Admin-toiminnallisuuksia voit kokeilla testitunnuksella `antti` ja salasanalla `
 
 [Käyttötapaukset ja tietokantakaavio](https://github.com/petrihei/avustussovellus/tree/master/documentation)
 
+[Asennus- ja käyttöohje](https://github.com/petrihei/avustussovellus/tree/master/documentation/Asennus-ja-kaytto-ohje.md)
+
