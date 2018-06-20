@@ -3,7 +3,7 @@ from flask_login import current_user, login_required
 
 from application import app, db
 from application.applications.models import Application
-from application.applications.forms import ApplicationForm
+from application.applications.forms import ApplicationForm, ModificationForm
 
 @app.route("/applications/new/")
 @login_required
@@ -63,13 +63,13 @@ def applications_view(application_id):
 @app.route("/applications/edit/<application_id>")
 @login_required
 def applications_edit_form(application_id):
-    return render_template("applications/edit.html", form=ApplicationForm(), application=Application.query.get(application_id))
+    return render_template("applications/edit.html", form=ModificationForm(), application=Application.query.get(application_id))
 
 
 @app.route("/applications/edit/<application_id>", methods=["POST"])
 @login_required
 def applications_edit(application_id):
-    form = ApplicationForm(request.form)
+    form = ModificationForm(request.form)
     application = Application.query.get(application_id)
     form.application_id = application.id
     if not form.validate():
