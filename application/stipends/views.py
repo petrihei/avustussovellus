@@ -1,23 +1,27 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_required, current_user
+from flask_login import login_user, logout_user, current_user
 
-from application import app, db
+from application import app, db, login_required
 from application.stipends.models import Stipend
 from application.stipends.forms import StipendForm, ReceiverForm
 
 @app.route("/stipends/new/")
-@login_required
+@login_required(role="ADMIN")
 def stipends_form():
     return render_template("stipends/new.html", form=StipendForm())
 
 @app.route("/stipends", methods=["GET"])
-@login_required
+@login_required(role="ADMIN")
 def stipends_index():
     return render_template("stipends/list.html", stipends=Stipend.query.all())
 
+@app.route("/stipends-user", methods=["GET"])
+@login_required(role="USER")
+def stipends_index_user():
+    return render_template("stipends/list-user.html", stipends=Stipend.query.all())
 
 @app.route("/stipends/set/<stipend_id>/", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def stipends_set_receiver(stipend_id):
 
     t = Stipend.query.get(stipend_id)
@@ -33,14 +37,8 @@ def stipends_set_receiver(stipend_id):
 
     return redirect(url_for("stipends_index"))
 
-
-@app.route("/stipends/set/")
-@login_required
-def stipends_set():
-    return render_template("stipends/set.html", form=StipendForm())
-
 @app.route("/stipends/", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def stipends_create():
     form = StipendForm(request.form)
 
@@ -58,11 +56,31 @@ def stipends_create():
     return redirect(url_for("stipends_index"))
 
 @app.route("/stipends/remove/<stipend_id>/", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def stipends_remove(stipend_id):
 
     t = Stipend.query.get(stipend_id)
     db.session().delete(t)
     db.session().commit()
 
+    return redirect(url_for("stipends_index"))
+
+@app.route("/stipend/edit/<stipend_id>")
+@login_required(role="ADMIN")
+def stipends_edit_form(stipend_id):
+    return render_template("stipends/edit.html", form=ReceiverForm(), stipend=Stipend.query.get(stipend_id))
+
+@app.route("/stipends/edit/<stipend_id>", methods=["POST"])
+@login_required(role="ADMIN")
+def stipends_edit(stipend_id):
+    form = ReceiverForm(request.form)
+    stipend = Stipend.query.get(stipend_id)
+    form.stipend_id = stipend.id
+    if not form.validate():
+        return render_template("stipends/edit.html", form=form, stipend=stipend)
+    form.name = stipend.name
+    stipend.sum = stipend.sum
+    stipend.definition = stipend.definition
+    stipend.receiver = form.receiver.data
+    db.session().commit()
     return redirect(url_for("stipends_index"))

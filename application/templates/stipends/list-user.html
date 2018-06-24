@@ -1,0 +1,19 @@
+{% extends "layout.html" %} {% block body %}
+<table>
+    <tr>
+        <th>Stipend</th>
+        <th>Sum</th>
+        <th>Explanation</th>
+        <th>Receiver</th>
+        <th></th>
+    </tr>
+    {% for stipend in stipends %}
+    <tr>
+        <td>{{ stipend.name }}</td>
+        <td>{{ stipend.sum }}</td>
+        <td>{{ stipend.definition }}</td>
+        <td>{{ stipend.receiver }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

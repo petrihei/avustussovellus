@@ -18,14 +18,27 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
             {% if current_user.is_authenticated %}
+            {% if current_user.role == "ADMIN"%}
             <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('applications_index') }} ">List applications</a>
+                <a class="nav-link" href="{{ url_for('applications_index') }} ">All applications</a>
             </li>
+            {% endif %}
+            {% if current_user.role == "USER"%}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('applications_index') }} ">My applications</a>
+            </li>
+            {% endif %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('applications_form') }} ">Add an application</a>
             </li>
+            {% if current_user.role == "USER"%}
             <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('stipends_index') }}">List stipends</a>
+                <a class="nav-link" href="{{ url_for('stipends_index_user') }}">Stipends</a>
+            </li>
+            {% endif %}
+            {% if current_user.role == "ADMIN"%}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('stipends_index') }}">Manage stipends</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('stipends_form') }}">Add a stipend</a>
@@ -33,7 +46,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('users_index') }}">User management</a>
             </li>
-             {% endif %}
+            {% endif %}
+            {% endif %}
         </ul>
         <div class="form-inline mt-4 mt-md-0 ml-4">
             {% if current_user.is_authenticated %}

@@ -57,6 +57,8 @@ def users_index():
 @login_required(role="ADMIN")
 def users_remove(account_id):
 
+    User.delete_users_applications(account_id)
+    
     t = User.query.get(account_id)
     db.session().delete(t)
     db.session().commit()

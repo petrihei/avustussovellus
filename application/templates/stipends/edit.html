@@ -1,0 +1,6 @@
+{% extends "layout.html" %} {% block body %}
+<form method="POST" action="{{ url_for('stipends_edit', stipend_id=stipend.id) }}">
+    {{ stipend.name }} {{ form.receiver }}
+    <button type="submit" class="btn btn-primary">Insert receiver's User ID</button>
+</form>
+{% endblock %}

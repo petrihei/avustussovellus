@@ -9,6 +9,7 @@
         <th></th>
     </tr>
     {% for application in applications %}
+    {% if current_user.id == application.account_id or current_user.role == "ADMIN"%}
     <tr>
         <td>{{ application.name }}</td>
         <td>{{ application.sum }}</td>
@@ -36,6 +37,7 @@
             </form>
         </td>
     </tr>
+     {% endif %}
     {% endfor %}
 </table>
 {% endblock %}

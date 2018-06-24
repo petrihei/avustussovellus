@@ -16,6 +16,11 @@
         <td>{{ stipend.definition }}</td>
         <td>{{ stipend.receiver }}</td>
         <td>
+            <form action="{{ url_for('stipends_edit_form', stipend_id=stipend.id) }}">
+                <button type="submit" class="btn btn-primary btn-sm">Set receiver</button>
+            </form>
+        </td>
+        <td>
             <form method="POST" action="{{ url_for('stipends_remove', stipend_id=stipend.id) }}">
                 <button type="submit" class="btn btn-primary btn-sm">Delete stipend</button>
             </form>

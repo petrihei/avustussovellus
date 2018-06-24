@@ -16,14 +16,12 @@
         <td>{{ account.username }}</td>
         <td>{{ account.id }}</td>
         <td>{{ account.date_created }}</td>
-        <!--
         <td>
             <form method="POST" action="{{ url_for('users_remove', account_id=account.id) }}">
-                <input type="submit" value="Delete user" name="Delete" />
+                <button type="submit" class="btn btn-primary btn-sm">Remove user</button>
             </form>
         </td>
-        TODO: pitää pystyä poistamaan myös hakemukset ja stipendit, muuten SQL error
-         -->
+        <th>Removing user deletes also his/her applications</th>
     </tr>
     {% endfor %}
 </table>

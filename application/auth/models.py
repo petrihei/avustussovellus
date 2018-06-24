@@ -74,3 +74,8 @@ class User(Base):
             response.append({"id": row[0], "name": row[1]})
 
         return response
+
+    @staticmethod
+    def delete_users_applications(account_id):
+        stmt = text("DELETE FROM Application WHERE Application.account_id = account_id")
+        db.engine.execute(stmt)

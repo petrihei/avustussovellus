@@ -6,7 +6,7 @@ class Stipend(Base):
     name = db.Column(db.String(144), nullable=False)
     sum = db.Column(db.Integer, nullable=False)
     definition = db.Column(db.String(1000), nullable=False)
-    receiver = db.Column(db.String(144), nullable=False)
+    receiver = db.Column(db.Integer, nullable=False)
 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
                             nullable=False)
@@ -15,4 +15,4 @@ class Stipend(Base):
         self.name = name
         self.sum = 0
         self.definition = ""
-        self.receiver = ""
+        self.receiver = 0

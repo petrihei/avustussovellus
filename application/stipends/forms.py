@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, FloatField, validators
+from wtforms import StringField, TextAreaField, FloatField, validators, IntegerField
 
 
 class StipendForm(FlaskForm):
@@ -12,8 +12,10 @@ class StipendForm(FlaskForm):
     class Meta:
         csrf = False
 
+
 class ReceiverForm(FlaskForm):
-    receiver = StringField("Stipend receiver name", [validators.Length(min=2, max=50)])
+    receiver = IntegerField("Receiver", [validators.NumberRange(
+        min=1, max=10000, message=None)])
 
     class Meta:
         csrf = False
