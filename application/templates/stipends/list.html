@@ -14,7 +14,12 @@
         <td>{{ stipend.name }}</td>
         <td>{{ stipend.sum }}</td>
         <td>{{ stipend.definition }}</td>
+        {% if stipend.receiver == "0"%}
+        <td> </td>
+        {% endif %}
+        {% if stipend.receiver != "0"%}
         <td>{{ stipend.receiver }}</td>
+        {% endif %}
         <td>
             <form action="{{ url_for('stipends_edit_form', stipend_id=stipend.id) }}">
                 <button type="submit" class="btn btn-primary btn-sm">Set receiver</button>
