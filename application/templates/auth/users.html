@@ -71,16 +71,16 @@
 
 {% endif %}
 
-{% if no_stipends is defined %}
+{% if with_stipends is defined %}
 <p>
 
 </p>
 <p>
-    <b>The following users have not received stipends:</b>
+    <b>The following users have received stipends:</b>
 </p>
 
 <ul>
-    {% for user in no_stipends %}
+    {% for user in with_stipends %}
     <li>
         {{user.id}} {{user.name}}
     </li>

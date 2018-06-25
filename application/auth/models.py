@@ -72,8 +72,10 @@ class User(Base):
         return response
 
     @staticmethod
-    def find_users_with_no_stipends():
-        stmt = text("SELECT Account.id, Account.name FROM Account")
+    def find_users_with_stipends():
+        stmt = text("SELECT Account.id, Account.name FROM Account, Stipend"
+                    " WHERE Account.id = Stipend.receiver"
+                    " GROUP BY Account.id")
         res = db.engine.execute(stmt)
 
         response = []
