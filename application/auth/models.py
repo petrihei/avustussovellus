@@ -84,13 +84,14 @@ class User(Base):
 
     @staticmethod
     def find_users_who_applied_stipends():
-        stmt = text("SELECT Account.id, Account.name FROM Account")
+        stmt = text("SELECT * FROM association")
         res = db.engine.execute(stmt)
 
         response = []
         for row in res:
-            response.append({"id": row[0], "name": row[1]})
+            response.append({"account_id": row[0], "stipend_id": row[1]})
 
+        print(response)
         return response
 
     @staticmethod

@@ -3,14 +3,16 @@
 {% block body %}
 <table>
     <tr>
+        <th>Stipend ID</th>
         <th>Stipend</th>
         <th>Sum</th>
         <th>Explanation</th>
-        <th>Receiver</th>
+        <th>Receiver's User ID</th>
         <th></th>
     </tr>
     {% for stipend in stipends %}
     <tr>
+        <td>{{ stipend.id }}</td>
         <td>{{ stipend.name }}</td>
         <td>{{ stipend.sum }}</td>
         <td>{{ stipend.definition }}</td>
@@ -33,4 +35,23 @@
     </tr>
     {% endfor %}
 </table>
+
+{% if users_who_applied_stipends is defined %}
+<p>
+
+</p>
+<p>
+    <b>The following users have applied following stipends:</b>
+</p>
+
+<ul>
+    {% for user in users_who_applied_stipends %}
+    <li>
+        <p>User ID: {{user.account_id}} </p>
+        <p>Stipend ID: {{user.stipend_id}} </p>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
 {% endblock %}

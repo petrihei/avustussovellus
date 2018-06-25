@@ -14,7 +14,8 @@ def stipends_form():
 @app.route("/stipends", methods=["GET"])
 @login_required(role="ADMIN")
 def stipends_index():
-    return render_template("stipends/list.html", stipends=Stipend.query.all())
+    return render_template("stipends/list.html", stipends=Stipend.query.all(), 
+    users_who_applied_stipends=User.find_users_who_applied_stipends())
 
 @app.route("/stipends-user", methods=["GET"])
 @login_required(role="USER")
