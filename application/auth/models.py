@@ -76,11 +76,16 @@ class User(Base):
         stmt = text("SELECT Account.id, Account.name FROM Account, Stipend"
                     " WHERE Account.id = Stipend.receiver"
                     " GROUP BY Account.id")
-        res = db.engine.execute(stmt)
+        try:
+            res = db.engine.execute(stmt)
 
         response = []
         for row in res:
             response.append({"id": row[0], "name": row[1]})
+        
+        except SQLAlchemyError:
+            db.session.rollback()
+            raise
 
         return response
 
