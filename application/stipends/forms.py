@@ -7,7 +7,6 @@ class StipendForm(FlaskForm):
     definition = TextAreaField("Definition", [validators.Length(min=10, max=500)])
     sum = FloatField("Sum", [validators.NumberRange(
         min=1, max=10000, message=None)])
- #   receiver = StringField("Receiver name", [validators.Length(min=2, max=50)])
 
     class Meta:
         csrf = False
