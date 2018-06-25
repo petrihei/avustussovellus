@@ -75,7 +75,7 @@ class User(Base):
     @staticmethod
     def find_users_with_stipends():
         stmt = text("SELECT Account.id, Account.name FROM Account"
-                    " WHERE Account.id = Stipend.receiver"
+                    " LEFT JOIN Stipend ON Stipend.receiver = Account.id"
                     " GROUP BY Account.id")
         try:
             res = db.engine.execute(stmt)
