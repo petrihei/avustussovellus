@@ -1,4 +1,4 @@
-### Asennusohjeet
+## Asennusohjeet
 
 * Forkkaa projekti ja lataa se paikalliseen versionhallintaan
 ```
@@ -37,9 +37,9 @@ INSERT INTO account (name, username, password, role) VALUES ('Antti Admin', 'ant
 * Käytä sovellusta
 
 
-### Käyttöohjeet
+## Käyttöohjeet
 
-# Käyttäjänä voit:
+### Käyttäjänä voit:
 
 * Rekisteröityä
 * Kirjautua
@@ -49,7 +49,7 @@ INSERT INTO account (name, username, password, role) VALUES ('Antti Admin', 'ant
 * Listata haettavat stipendit
 * Hakea stipendiä
 
-# Ylläpitäjänä voin:
+### Ylläpitäjänä voit:
 
 * Listata kaikki avustushakemukset ja katsella niiden tarkempia tietoja
 * Hyväksyä ja poistaa avustushakemuksia
