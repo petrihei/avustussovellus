@@ -74,7 +74,7 @@ class User(Base):
 
     @staticmethod
     def find_users_with_stipends():
-        stmt = text("SELECT Account.id, Account.name FROM Account, Stipend"
+        stmt = text("SELECT Account.id, Account.name FROM Account"
                     " WHERE Account.id = Stipend.receiver"
                     " GROUP BY Account.id")
         try:
