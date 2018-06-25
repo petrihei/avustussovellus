@@ -74,15 +74,14 @@ class User(Base):
 
     @staticmethod
     def find_users_with_stipends():
-        stmt = text("SELECT Stipend.id, Account.name FROM Account, Stipend"
-                    " WHERE (Stipend.receiver = Account.id)"
-                    " GROUP BY Account.id")
+        stmt = text("SELECT Stipend.id, Stipend.receiver FROM Stipend"
+                    " WHERE (Stipend.receiver != 0)")
 
         res = db.engine.execute(stmt)
 
         response = []
         for row in res:
-            response.append({"id": row[0], "name": row[1]})
+            response.append({"id": row[0], "receiver": row[1]})
 
         return response
 

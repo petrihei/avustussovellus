@@ -76,13 +76,13 @@
 
 </p>
 <p>
-    <b>The following users have received stipends:</b>
+    <b>The following stipends have been granted to following users:</b>
 </p>
 
 <ul>
-    {% for user in with_stipends %}
+    {% for stipend in with_stipends %}
     <li>
-        {{user.id}} {{user.name}}
+        <p>Stipend: {{stipend.id}}</p><p>Receiver's User ID: {{stipend.receiver}}</p>
     </li>
     {% endfor %}
 </ul>
