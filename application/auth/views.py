@@ -50,7 +50,7 @@ def register():
 @login_required(role="ADMIN")
 def users_index():
     return render_template("auth/users.html", accounts=User.query.all(), 
-                           no_applications=User.find_users_with_no_applications(), with_stipends=User.find_users_with_stipends(),
+                           no_applications=User.find_users_with_no_applications(),
                            no_approved_applications=User.find_users_with_no_approved_applications() 
                            )
 

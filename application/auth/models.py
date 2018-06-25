@@ -73,19 +73,6 @@ class User(Base):
         return response
 
     @staticmethod
-    def find_users_with_stipends():
-        stmt = text("SELECT Stipend.id, Stipend.receiver FROM Stipend"
-                    " WHERE (Stipend.receiver != 0)")
-
-        res = db.engine.execute(stmt)
-
-        response = []
-        for row in res:
-            response.append({"id": row[0], "receiver": row[1]})
-
-        return response
-
-    @staticmethod
     def find_users_who_applied_stipends():
         stmt = text("SELECT * FROM association")
         res = db.engine.execute(stmt)
