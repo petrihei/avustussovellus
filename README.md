@@ -36,7 +36,7 @@ Tavallisen käyttäjän testitunnus on `tero` ja salasana `testaaja`. Voit myös
 
 Admin-toiminnallisuuksia voit kokeilla testitunnuksella `antti` ja salasanalla `admin`
 
-[Käyttötapaukset ja tietokantakaavio](https://github.com/petrihei/avustussovellus/tree/master/documentation)
+[Käyttötapaukset, tietokantakaavio ja muu dokumentaatio](https://github.com/petrihei/avustussovellus/tree/master/documentation)
 
 [Asennus- ja käyttöohje](https://github.com/petrihei/avustussovellus/tree/master/documentation/Asennus-ja-kaytto-ohje.md)
 

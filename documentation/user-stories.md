@@ -1,3 +1,5 @@
+## Käyttötapaukset
+
 Käyttäjänä voin:
 
 * Rekisteröityä
@@ -22,3 +24,43 @@ Ylläpitäjänä voin:
 * Tarkastella käyttäjän tietoja
 * Muokata käyttäjän tunnusta ja salasanaa
 * Poistaa käyttäjän
+
+## Keskeisiä SQL-kyselyitä ja -komentoja
+
+* Admin-käyttäjän luominen
+
+```
+INSERT INTO account (name, username, password, role) VALUES ('Antti Admin', 'antti', 'admin', 'ADMIN');
+```
+
+* Haku käyttäjistä, joilla ei ole hakemuksia
+
+```
+SELECT Account.id, Account.name FROM Account
+LEFT JOIN Application ON Application.account_id = Account.id
+WHERE (Application.approved IS null)
+GROUP BY Account.id
+HAVING COUNT(Application.id) = 0;
+```
+
+* Haku käyttäjistä, joilla ei ole hyväksyttyjä hakemuksia
+
+```
+("SELECT Account.id, Account.name FROM Account"
+" LEFT JOIN Application ON Application.account_id = Account.id"
+" WHERE (Application.approved != :approved OR Application.approved IS null)"
+" GROUP BY Account.id").params(approved=True)
+```
+
+* Stipendinhakijoiden hakeminen
+
+```
+SELECT * FROM association;
+```
+
+* Tietyn käyttäjän hakemusten poisto ennen käyttäjän poistamista
+
+```
+("DELETE FROM Application WHERE Application.account_id = :acc_id").params(
+acc_id=id)
+```
