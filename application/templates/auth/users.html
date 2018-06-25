@@ -71,20 +71,4 @@
 
 {% endif %}
 
-{% if with_stipends is defined %}
-<p>
-
-</p>
-<p>
-    <b>The following stipends have been granted to following users:</b>
-</p>
-
-<ul>
-    {% for stipend in with_stipends %}
-    <li>
-        <p>Stipend: {{stipend.id}}</p><p>Receiver's User ID: {{stipend.receiver}}</p>
-    </li>
-    {% endfor %}
-</ul>
-{% endif %}
 {% endblock %}
