@@ -16,7 +16,7 @@
         <td>{{ account.name }}</td>
         <td>{{ account.username }}</td>
         <td>{{ account.id }}</td>
-        <td>{{ account.date_created }}</td>
+        <td>{{ account.date_created.strftime('%Y-%m-%d') }}</td>
         <td>
             <form action="{{ url_for('users_view', account_id=account.id) }}">
                 <button type="submit" class="btn btn-primary btn-sm">View details</button>

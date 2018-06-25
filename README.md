@@ -4,19 +4,31 @@ Järjestön sovellus avustusten hallinnointiin. Käyttäjä voi lisätä palvelu
 
 Järjestö myös jakaa stipendejä ennalta määrättyihin kohteisiin. Näitä voi hakea usea käyttäjä. Sama käyttäjä voi myös hakea useita stipendejä.
 
-Toimintoja:
+Käyttäjän toimintoja:
 
+* Rekisteröityminen
 * Kirjautuminen
 * Avustushakemusten tekeminen
-* Avustushakemuspäätöksen tekeminen
-* Automaattinen tarkastus avustuksen myöntämisestä edellisen 12 kk aikana
-* Avustushakemusten listaus
+* Omien avustushakemusten listaus ja lisätietojen katselu
+* Omien avustushakemusten poistaminen
+* Stipendien listaus
+* Stipendien hakeminen
+
+Ylläpitäjän toimintoja:
+
+* Kaikkien avustushakemusten listaus ja tarkempien tietojen katselu
+* Avustushakemuksen hyväksyminen
+* Avustushakemuksen poistaminen
+* Avustushakemuksen summan muuttaminen
 * Stipendien tekeminen
 * Stipendien listaus
 * Stipendin saajan asettaminen
-* Käyttäjien luominen
+* Stipendin poistaminen
+* Stipendinhakijoiden listaus stipendikohtaisesti
+* Käyttäjien listaaminen eri kriteereillä
+* Käyttäjien tarkempi katselu
+* Käyttäjien käyttäjätunnusten ja salasanojen muokkaus
 * Käyttäjien poistaminen
-* Käyttäjän tietojen muokkaaminen
 
 Sovellus löytyy Herokusta: https://avustussovellus.herokuapp.com
 
