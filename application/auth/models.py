@@ -77,16 +77,12 @@ class User(Base):
         stmt = text("SELECT Account.id, Account.name FROM Account"
                     " LEFT JOIN Stipend ON Stipend.receiver = Account.id"
                     " GROUP BY Account.id")
-        try:
-            res = db.engine.execute(stmt)
 
-            response = []
-            for row in res:
-                response.append({"id": row[0], "name": row[1]})
-        
-        except SQLAlchemyError:
-            db.session.rollback()
-            raise
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"id": row[0], "name": row[1]})
 
         return response
 
