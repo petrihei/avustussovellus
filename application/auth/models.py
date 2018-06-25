@@ -2,6 +2,7 @@ from application import db
 from application.models import Base
 
 from sqlalchemy.sql import text
+from sqlalchemy.exc import SQLAlchemyError
 
 
 class User(Base):
@@ -79,9 +80,9 @@ class User(Base):
         try:
             res = db.engine.execute(stmt)
 
-        response = []
-        for row in res:
-            response.append({"id": row[0], "name": row[1]})
+            response = []
+            for row in res:
+                response.append({"id": row[0], "name": row[1]})
         
         except SQLAlchemyError:
             db.session.rollback()
