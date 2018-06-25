@@ -3,6 +3,7 @@ from flask_login import login_user, logout_user, current_user
 
 from application import app, db, login_required
 from application.stipends.models import Stipend
+from application.auth.models import User
 from application.stipends.forms import StipendForm, ReceiverForm
 
 @app.route("/stipends/new/")
@@ -84,3 +85,25 @@ def stipends_edit(stipend_id):
     stipend.receiver = form.receiver.data
     db.session().commit()
     return redirect(url_for("stipends_index"))
+
+
+@app.route("/stipends/<stipend_id>/auth/<account_id>/", methods=["POST"])
+@login_required(role="USER")
+def stipend_applier_add(stipend_id, account_id):
+    a = Stipend.query.get(stipend_id)
+    r = User.query.get(account_id)
+    r.children.append(a)
+
+    try:
+        db.session().commit()
+    except:
+        db.session().rollback()
+        raise
+
+    return redirect(url_for("stipends_thank_you"))
+
+
+@app.route("/stipends/thankyou/")
+@login_required(role="USER")
+def stipends_thank_you():
+    return render_template("stipends/thankyou.html")

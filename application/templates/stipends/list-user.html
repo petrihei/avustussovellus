@@ -12,7 +12,22 @@
         <td>{{ stipend.name }}</td>
         <td>{{ stipend.sum }}</td>
         <td>{{ stipend.definition }}</td>
+        {% if current_user.id == stipend.receiver %}
+        <td>You have been granted a stipend</td>
+        {% endif %}
+        {% if stipend.receiver == "0"%}
+        <td> </td>
+        {% endif %}
+        {% if stipend.receiver != "0" and stipend.receiver != current_user.id %}
         <td>{{ stipend.receiver }}</td>
+        {% endif %}
+        {% if stipend.receiver == "0"%}
+        <td>
+            <form method="POST" action="{{ url_for('stipend_applier_add', stipend_id=stipend.id, account_id=current_user.id) }}">
+                <button type="submit" class="btn btn-primary btn-sm">Apply stipend</button>
+            </form>
+        </td>
+        {% endif %}
     </tr>
     {% endfor %}
 </table>

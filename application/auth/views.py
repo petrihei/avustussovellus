@@ -3,7 +3,7 @@ from flask_login import login_user, logout_user, current_user
 
 from application import app, db, login_required
 from application.auth.models import User
-from application.auth.forms import LoginForm, RegistrationForm
+from application.auth.forms import LoginForm, RegistrationForm, ModificationForm
 
 
 @app.route("/auth/login", methods=["GET", "POST"])
@@ -63,4 +63,31 @@ def users_remove(account_id):
     db.session().delete(t)
     db.session().commit()
 
+    return redirect(url_for("users_index"))
+
+
+@app.route("/auth/view/<account_id>")
+@login_required(role="ADMIN")
+def users_view(account_id):
+    return render_template("/auth/view.html", account=User.query.get(account_id))
+
+
+@app.route("/auth/edit/<account_id>")
+@login_required(role="ADMIN")
+def users_edit_form(account_id):
+    return render_template("/auth/edit.html", form=ModificationForm(), account=User.query.get(account_id))
+
+
+@app.route("/auth/edit/<account_id>", methods=["POST"])
+@login_required(role="ADMIN")
+def users_edit(account_id):
+    form = ModificationForm(request.form)
+    account = User.query.get(account_id)
+    form.account_id = account.id
+    if not form.validate():
+        return render_template("/auth/edit.html", form=form, account=account)
+    form.name = account.name
+    account.username = form.username.data
+    account.password = form.password.data
+    db.session().commit()
     return redirect(url_for("users_index"))

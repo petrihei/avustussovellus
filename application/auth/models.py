@@ -15,6 +15,14 @@ class User(Base):
 
     applications = db.relationship("Application", backref='account', lazy=True)
 
+    association_table = db.Table('association', Base.metadata,
+                                 db.Column('account_id', db.Integer,
+                                           db.ForeignKey('account.id')),
+                                 db.Column('stipend_id', db.Integer, db.ForeignKey('stipend.id')))
+
+    children = db.relationship(
+        "Stipend", secondary=association_table, backref="parents")
+
     def __init__(self, name):
         self.name = name
         self.role = "USER"
@@ -66,7 +74,17 @@ class User(Base):
     @staticmethod
     def find_users_with_no_stipends():
         stmt = text("SELECT Account.id, Account.name FROM Account")
-        # TODO: Täydennä siten, että hakee ne, jotka eivät stipend.receiver
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"id": row[0], "name": row[1]})
+
+        return response
+
+    @staticmethod
+    def find_users_who_applied_stipends():
+        stmt = text("SELECT Account.id, Account.name FROM Account")
         res = db.engine.execute(stmt)
 
         response = []
